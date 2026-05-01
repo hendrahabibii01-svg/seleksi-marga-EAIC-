@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Education of Astronomy - Registration</title>
+    
+    <style>
+        /* CSS DASAR */
+        body { background: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
+        
+        /* LOADING SCREEN 5 DETIK */
+        #loader {
+            position: fixed; inset: 0; background: #000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 9999;
+        }
+        .spinner-box { position: relative; width: 180px; height: 180px; display: flex; justify-content: center; align-items: center; }
+        .loader-text { font-weight: 900; font-size: 2.2rem; letter-spacing: 8px; position: absolute; color: #fff; text-align: center; }
+        .line { position: absolute; border: 4px solid transparent; border-radius: 50%; animation: spin var(--d) linear infinite; }
+        .l-red { width: 170px; height: 170px; border-top-color: #ff0000; --d: 1.2s; }    
+        .l-yellow { width: 140px; height: 140px; border-left-color: #ffff00; --d: 1s; } 
+        .l-blue { width: 110px; height: 110px; border-bottom-color: #0000ff; --d: 0.8s; } 
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* KONTEN UTAMA */
+        #main-content { display: none; padding: 20px; max-width: 450px; margin: 0 auto; box-sizing: border-box; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: #ff0000; font-size: 2.2rem; font-style: italic; font-weight: 900; margin: 0; line-height: 1.2; }
+        .header p { font-size: 10px; letter-spacing: 1px; color: #666; margin-top: 5px; text-transform: uppercase; }
+        
+        /* FORM STYLING */
+        .form-bg { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 20px; border-radius: 20px; }
+        .input-group { margin-bottom: 15px; }
+        .label { display: block; font-size: 11px; color: #888; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; }
+        .input-box { 
+            background: #111; border: 1px solid #333; color: #fff; border-radius: 10px; 
+            width: 100%; padding: 12px; box-sizing: border-box; outline: none; transition: 0.3s;
+        }
+        .input-box:focus { border-color: #ff0000; }
+        .btn-submit { 
+            background: #ff0000; color: #fff; border: none; padding: 15px; width: 100%; 
+            border-radius: 12px; font-weight: bold; margin-top: 10px; cursor: pointer; text-transform: uppercase;
+        }
+
+        /* CARD MEMBER RESULT */
+        #result-view { display: none; text-align: center; }
+        #member-card { 
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); 
+            border: 1px solid #333; padding: 25px; border-radius: 20px; text-align: left; margin-bottom: 20px;
+            position: relative; overflow: hidden;
+        }
+        #member-card::after {
+            content: "HEA"; position: absolute; bottom: -10px; right: -5px; font-size: 80px;
+            font-weight: 900; color: rgba(255,0,0,0.05); font-style: italic;
+        }
+        .card-photo { width: 85px; height: 85px; border: 2px solid #ff0000; border-radius: 12px; object-fit: cover; margin-bottom: 10px; position: relative; z-index: 1; }
+        .card-info h2 { margin: 0; color: #ff0000; font-size: 22px; position: relative; z-index: 1; }
+        .card-info p { margin: 3px 0; font-size: 13px; color: #ccc; position: relative; z-index: 1; }
+        .divider { height: 1px; background: #333; margin: 10px 0; }
+        
+        /* TOMBOL AKHIR */
+        .btn-action { display: block; text-align: center; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; margin-top: 10px; font-size: 14px; }
+        .bg-green { background: #25d366; color: #fff; }
+        .bg-white { background: #fff; color: #000; }
+        .bg-gray { background: #222; color: #fff; border: 1px solid #444; cursor: pointer; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div class="spinner-box">
+            <div class="loader-text">HEA</div>
+            <div class="line l-red"></div>
+            <div class="line l-yellow"></div>
+            <div class="line l-blue"></div>
+        </div>
+        <p style="color: #444; font-size: 10px; margin-top: 30px; letter-spacing: 3px;">HISTORY EDUCATION OF ASTRONOMY</p>
+    </div>
+
+    <main id="main-content">
+        <div id="form-view">
+            <div class="header">
+                <h1>History Education of Astronomy</h1>
+                <p>Official Member Registration</p>
+            </div>
+            
+            <div class="form-bg">
+                <form id="regForm">
+                    <div class="input-group">
+                        <label class="label">Nama Lengkap</label>
+                        <input type="text" id="nama" class="input-box" required placeholder="Nama Anda...">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Tanggal Lahir</label>
+                        <input type="date" id="tgl" class="input-box" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Gender</label>
+                        <select id="gender" class="input-box">
+                            <option>Laki-laki</option>
+                            <option>Perempuan</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Status</label>
+                        <select id="status" class="input-box">
+                            <option>Pelajar</option>
+                            <option>Mahasiswa</option>
+                            <option>Bekerja</option>
+                            <option>Berkeluarga</option>
+                            <option>Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Nama Akun TikTok</label>
+                        <input type="text" id="tiktok_user" class="input-box" required placeholder="@username">
+                    </div>
+
+                    <div class="input-group">
+                        <label class="label">Link Akun TikTok</label>
+                        <input type="url" id="tiktok_link" class="input-
